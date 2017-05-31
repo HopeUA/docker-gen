@@ -65,7 +65,7 @@ server {
 
 server {
     server_name {{ $host }};
-    listen 80 {{ $default_server }};
+    listen 80;
     access_log /var/log/nginx/access.log main;
 
     {{ if (exists "/etc/nginx/vhost.d/default") }}
