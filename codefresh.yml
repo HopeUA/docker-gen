@@ -13,6 +13,7 @@ steps:
     image: "${{Build}}"
     working_directory: IMAGE_WORK_DIR
     commands:
+      - "echo -n Docker Gen version: "
       - "docker-gen -version"
     on_success:
       metadata:
