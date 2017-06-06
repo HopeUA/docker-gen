@@ -1,4 +1,4 @@
-FROM jwilder/docker-gen
+FROM hope/docker-gen
 
 COPY rootfs/ /
 
