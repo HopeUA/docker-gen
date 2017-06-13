@@ -55,15 +55,15 @@ server {
     ssl_certificate /etc/nginx/certs/{{ (printf "%s.crt" $cert) }};
     ssl_certificate_key /etc/nginx/certs/{{ (printf "%s.key" $cert) }};
 
-    {{ if $enable_cors }}
-    include /etc/nginx/cors.conf;
-    {{ end }}
-
     {{ if (exists "/etc/nginx/vhost.d/default") }}
     include /etc/nginx/vhost.d/default;
     {{ end }}
 
     location / {
+        {{ if $enable_cors }}
+        include /etc/nginx/cors.conf;
+        {{ end }}
+
         proxy_pass http://{{ trim $host }};
     }
 }
