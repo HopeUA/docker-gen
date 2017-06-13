@@ -7,6 +7,8 @@ proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
 proxy_set_header   X-Forwarded-Proto $scheme;
 proxy_set_header   X-Forwarded-Host $server_name;
 
+{{ $enable_cors := eq (or ($.Env.ENABLE_CORS) "") "true" }}
+
 # Default vhost
 server {
     server_name _; # This is just an invalid value which will never trigger on a real hostname.
@@ -29,8 +31,6 @@ upstream {{ $host }} {
 
 {{ end }}
 }
-
-{{ $enable_cors := eq (or ($.Env.ENABLE_CORS) "") "true" }}
 
 {{/* Get the best matching cert  by name for the vhost. */}}
 {{ $cert := (closest (dir "/etc/nginx/certs") (printf "%s.crt" $host))}}
