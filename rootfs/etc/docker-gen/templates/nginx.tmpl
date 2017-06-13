@@ -54,7 +54,7 @@ server {
     ssl_certificate /etc/nginx/certs/{{ (printf "%s.crt" $cert) }};
     ssl_certificate_key /etc/nginx/certs/{{ (printf "%s.key" $cert) }};
 
-    {{ if ($enable_cors) }}
+    {{ if $enable_cors }}
     include /etc/nginx/cors.conf;
     {{ end }}
 
