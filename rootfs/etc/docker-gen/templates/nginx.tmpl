@@ -64,6 +64,7 @@ server {
         include /etc/nginx/cors.conf;
         {{ end }}
 
+        client_max_body_size 300m;
         proxy_pass http://{{ trim $host }};
     }
 }
