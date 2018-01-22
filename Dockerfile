@@ -1,4 +1,4 @@
-FROM hope/docker-gen
+FROM hope/docker-gen:0.7
 
 COPY rootfs/ /
 
