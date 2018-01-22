@@ -2,4 +2,4 @@
 
 ## Usage
 
-Proxy contianer name – `proxy`
+Proxy container name – `proxy`
